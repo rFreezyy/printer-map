@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Norm Reeves Dynamic Printer Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 600px; }
+    body { font-family: Arial, sans-serif; }
+  </style>
+</head>
+<body>
+  <h2>🖨️ Norm Reeves Dealership Printer Locations (Dynamic)</h2>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('map').setView([33.8, -118.0], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    var bounds = [];
+
+    var locations = {
+      "Norm Reeves Honda Superstore Irvine": [33.6636, -117.7487],
+      "Norm Reeves Volkswagen Superstore Irvine": [33.6636, -117.7487],
+      "Norm Reeves Honda Superstore Cerritos": [33.8666, -118.1006],
+      "Norm Reeves Honda Superstore Huntington Beach": [33.6839, -118.0026],
+      "Norm Reeves Honda Superstore West Covina": [34.0633, -117.9284],
+      "Norm Reeves Ford Superstore Cerritos": [33.8669, -118.1002],
+      "Norm Reeves Lincoln Cerritos": [33.8669, -118.1002],
+      "Norm Reeves Hyundai Superstore Cerritos": [33.8661, -118.0984],
+      "Norm Reeves Toyota San Diego": [32.7850, -117.0996],
+      "Norm Reeves Genesis of Cerritos": [33.8652, -118.0988],
+      "Norm Reeves Genesis of Irvine": [33.6637, -117.7490],
+      "Norm Reeves Honda Superstore Port Charlotte": [26.9772, -82.0906],
+      "Norm Reeves Volkswagen Superstore Port Charlotte": [26.9772, -82.0906],
+      "Norm Reeves Honda Superstore North Richland Hills": [32.8334, -97.2185]
+    };
+
+    for (var name in locations) {
+      var coord = locations[name];
+      var marker = L.circleMarker(coord, {
+        radius: 8,
+        color: "#003366",
+        fillColor: "#3399FF",
+        fillOpacity: 0.8
+      }).addTo(map);
+      marker.bindPopup("<b>" + name + "</b>");
+      bounds.push(coord);
+    }
+
+    if (bounds.length > 0) {
+      map.fitBounds(bounds);
+    }
+  </script>
+</body>
+</html>

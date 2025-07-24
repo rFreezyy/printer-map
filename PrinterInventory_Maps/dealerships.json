@@ -1,8 +1,0 @@
-
-{
-  "dealerships": [
-    {"name": "Norm Reeves Honda Superstore Irvine", "lat": 33.6636, "lon": -117.7487},
-    {"name": "Norm Reeves Volkswagen Superstore Irvine", "lat": 33.6636, "lon": -117.7487},
-    {"name": "Norm Reeves Honda Superstore Cerritos", "lat": 33.8666, "lon": -118.1006}
-  ]
-}
